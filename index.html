@@ -444,7 +444,7 @@ footer{background:rgba(0,0,0,0.3);border-top:1px solid var(--border);padding:60p
       <div class="waitlist-form-box reveal">
 
         <!-- FORM — replace contact@rupipay.co.in with your real email address -->
-        <form id="wForm" action="https://formsubmit.co/contact@rupipay.co.in" method="POST">
+        <form id="wForm" action="https://formsubmit.co/ajax/contact@rupipay.co.in" method="POST">
           <input type="hidden" name="_subject" value="🎉 New RupiPay Waitlist Signup!">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
@@ -559,12 +559,28 @@ function animCount(){
 const cObs=new IntersectionObserver(e=>{if(e[0].isIntersecting){animCount();cObs.disconnect();}},{threshold:0.5});
 cObs.observe(document.getElementById('waitlist'));
 
-// Show success state if redirected back after form submit
-const params=new URLSearchParams(window.location.search);
-if(params.get('joined')==='1'){
-  document.getElementById('wForm').style.display='none';
-  document.getElementById('wSuccess').style.display='block';
-  document.getElementById('waitlist').scrollIntoView({behavior:'smooth'});
+// Waitlist form — AJAX submission (works on GitHub Pages)
+document.getElementById('wForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.waitlist-submit');
+  btn.textContent = 'Submitting...';
+  btn.disabled = true;
+  fetch(this.action, {
+    method: 'POST',
+    body: new FormData(this),
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(res => res.json())
+  .then(() => {
+    document.getElementById('wForm').style.display = 'none';
+    document.getElementById('wSuccess').style.display = 'block';
+  })
+  .catch(() => {
+    btn.textContent = '✉ Join the Waitlist — It\'s Free';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again.');
+  });
+});
 }
 </script>
 </body>
