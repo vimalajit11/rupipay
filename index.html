@@ -9,228 +9,68 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --saffron: #FF6B00;
-  --gold: #FFB347;
-  --navy: #0A1628;
-  --navy2: #111f38;
-  --navy3: #162540;
-  --purple: #5A35A8;
-  --white: #FFFFFF;
-  --muted: rgba(255,255,255,0.55);
-  --border: rgba(255,255,255,0.08);
-  --radius: 16px;
-}
-
+:root{--saffron:#FF6B00;--gold:#FFB347;--green:#138808;--navy:#0A1628;--navy2:#111f38;--navy3:#162540;--white:#FFFFFF;--muted:rgba(255,255,255,0.55);--border:rgba(255,255,255,0.08);--radius:16px;}
 *{margin:0;padding:0;box-sizing:border-box;}
-
 html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4;}
 
-body{
-  background:var(--navy);
-  color:var(--white);
-  font-family:'DM Sans',sans-serif;
-  font-size:16px;
-  line-height:1.7;
-  overflow-x:hidden;
-}
-
-/* ── GRAIN OVERLAY ── */
-body::before{
-  content:'';
-  position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:0;opacity:.4;
-}
-
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:20px 40px;
-  display:flex;align-items:center;justify-content:space-between;
-  transition:background .3s, backdrop-filter .3s, box-shadow .3s;
-}
-nav.scrolled{
-  background:rgba(10,22,40,0.9);
-  backdrop-filter:blur(14px);
-  box-shadow:0 1px 0 var(--border);
-}
-.logo{display:flex;align-items:center;gap:0;text-decoration:none;}
-.logo-svg{height:38px;width:auto;}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,box-shadow .3s;}
+nav.scrolled{background:rgba(10,22,40,0.92);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--border);}
+.logo{display:flex;align-items:center;text-decoration:none;}
 .nav-links{display:flex;gap:32px;list-style:none;}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;}
 .nav-links a:hover{color:var(--white);}
-.nav-cta{
-  background:var(--saffron);color:var(--white);
-  padding:10px 24px;border-radius:50px;
-  text-decoration:none;font-size:14px;font-weight:500;
-  transition:transform .2s,box-shadow .2s;
-  box-shadow:0 0 20px rgba(255,107,0,0.35);
-}
+.nav-cta{background:var(--saffron);color:var(--white);padding:10px 22px;border-radius:50px;text-decoration:none;font-size:14px;font-weight:500;transition:transform .2s,box-shadow .2s;box-shadow:0 0 20px rgba(255,107,0,0.35);}
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(255,107,0,0.5);}
 
-/* ── HERO ── */
-#hero{
-  min-height:100vh;
-  display:flex;align-items:center;
-  position:relative;overflow:hidden;
-  padding:120px 40px 80px;
-}
-.hero-glow{
-  position:absolute;
-  border-radius:50%;
-  filter:blur(80px);
-  pointer-events:none;
-}
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 40px 80px;}
+.hero-glow{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
 .glow-1{width:600px;height:600px;background:rgba(255,107,0,0.18);top:-100px;right:-100px;animation:drift1 8s ease-in-out infinite;}
-.glow-2{width:400px;height:400px;background:rgba(90,53,168,0.15);bottom:-50px;left:20%;animation:drift2 10s ease-in-out infinite;}
+.glow-2{width:400px;height:400px;background:rgba(19,136,8,0.1);bottom:-50px;left:20%;animation:drift2 10s ease-in-out infinite;}
 .glow-3{width:300px;height:300px;background:rgba(255,179,71,0.1);top:30%;left:-80px;animation:drift1 12s ease-in-out infinite reverse;}
-
 @keyframes drift1{0%,100%{transform:translate(0,0);}50%{transform:translate(30px,-40px);}}
 @keyframes drift2{0%,100%{transform:translate(0,0);}50%{transform:translate(-20px,30px);}}
-
-.hero-inner{
-  max-width:1200px;margin:0 auto;
-  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
-  position:relative;z-index:1;width:100%;
-}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,107,0,0.12);border:1px solid rgba(255,107,0,0.25);
-  padding:6px 16px;border-radius:50px;
-  font-size:13px;color:var(--gold);font-weight:500;
-  margin-bottom:24px;
-  animation:fadeUp .8s ease both;
-}
-.hero-badge span{width:6px;height:6px;background:var(--saffron);border-radius:50%;display:inline-block;animation:pulse 2s infinite;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.3);}}
-
-h1{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(38px,5vw,68px);
-  font-weight:800;
-  line-height:1.08;
-  margin-bottom:24px;
-  animation:fadeUp .8s .1s ease both;
-}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;width:100%;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,107,0,0.12);border:1px solid rgba(255,107,0,0.25);padding:6px 16px;border-radius:50px;font-size:13px;color:var(--gold);font-weight:500;margin-bottom:24px;animation:fadeUp .8s ease both;}
+.hero-badge span{width:6px;height:6px;background:var(--saffron);border-radius:50%;display:inline-block;animation:pulse 2s infinite;}
+h1{font-family:'Syne',sans-serif;font-size:clamp(38px,5vw,68px);font-weight:800;line-height:1.08;margin-bottom:24px;animation:fadeUp .8s .1s ease both;}
 h1 .highlight{color:var(--saffron);}
-h1 .underline-gold{
-  position:relative;display:inline-block;
-}
-h1 .underline-gold::after{
-  content:'';position:absolute;bottom:-4px;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--saffron),var(--gold));
-  border-radius:2px;
-}
-
-.hero-sub{
-  font-size:18px;color:var(--muted);
-  max-width:480px;margin-bottom:40px;
-  animation:fadeUp .8s .2s ease both;
-  font-weight:300;
-}
-.hero-btns{
-  display:flex;gap:16px;flex-wrap:wrap;
-  animation:fadeUp .8s .3s ease both;
-}
-.btn-primary{
-  background:var(--saffron);color:var(--white);
-  padding:14px 32px;border-radius:50px;
-  text-decoration:none;font-weight:500;font-size:16px;
-  box-shadow:0 0 30px rgba(255,107,0,0.4);
-  transition:transform .2s,box-shadow .2s;
-  display:inline-flex;align-items:center;gap:8px;
-}
+h1 .underline-gold{position:relative;display:inline-block;}
+h1 .underline-gold::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--saffron),var(--gold));border-radius:2px;}
+.hero-sub{font-size:18px;color:var(--muted);max-width:480px;margin-bottom:40px;animation:fadeUp .8s .2s ease both;font-weight:300;}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp .8s .3s ease both;}
+.btn-primary{background:var(--saffron);color:var(--white);padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:500;font-size:16px;box-shadow:0 0 30px rgba(255,107,0,0.4);transition:transform .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:none;font-family:inherit;}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 0 50px rgba(255,107,0,0.55);}
-.btn-ghost{
-  border:1px solid rgba(255,255,255,0.2);color:var(--white);
-  padding:14px 32px;border-radius:50px;
-  text-decoration:none;font-weight:400;font-size:16px;
-  transition:border-color .2s,background .2s;
-}
+.btn-ghost{border:1px solid rgba(255,255,255,0.2);color:var(--white);padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:400;font-size:16px;transition:border-color .2s,background .2s;}
 .btn-ghost:hover{border-color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);}
 
-/* Phone mockup */
-.hero-phone{
-  display:flex;justify-content:center;align-items:center;
-  position:relative;
-  animation:fadeUp .8s .2s ease both;
-}
-.phone-frame{
-  width:260px;height:520px;
-  background:var(--navy2);
-  border-radius:36px;
-  border:1.5px solid rgba(255,255,255,0.12);
-  box-shadow:0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
-  position:relative;overflow:hidden;
-  display:flex;flex-direction:column;align-items:center;
-  padding:24px 20px 20px;
-}
-.phone-notch{
-  width:80px;height:24px;background:var(--navy);
-  border-radius:0 0 14px 14px;margin-bottom:20px;
-}
-.phone-screen-label{
-  font-size:11px;color:var(--muted);margin-bottom:16px;text-align:center;letter-spacing:.5px;
-}
-.qr-box{
-  width:160px;height:160px;
-  border:2px solid rgba(255,107,0,0.5);
-  border-radius:16px;
-  display:grid;
-  place-items:center;
-  position:relative;
-  background:rgba(255,107,0,0.04);
-}
-.qr-corner{
-  position:absolute;width:20px;height:20px;border-color:var(--saffron);border-style:solid;
-}
+/* PHONE */
+.hero-phone{display:flex;justify-content:center;align-items:center;position:relative;animation:fadeUp .8s .2s ease both;}
+.phone-frame{width:260px;height:520px;background:var(--navy2);border-radius:36px;border:1.5px solid rgba(255,255,255,0.12);box-shadow:0 40px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:24px 20px 20px;}
+.phone-notch{width:80px;height:24px;background:var(--navy);border-radius:0 0 14px 14px;margin-bottom:20px;}
+.phone-screen-label{font-size:11px;color:var(--muted);margin-bottom:16px;text-align:center;letter-spacing:.5px;}
+.qr-box{width:160px;height:160px;border:2px solid rgba(255,107,0,0.5);border-radius:16px;display:grid;place-items:center;position:relative;background:rgba(255,107,0,0.04);}
+.qr-corner{position:absolute;width:20px;height:20px;border-color:var(--saffron);border-style:solid;}
 .qr-corner.tl{top:-1px;left:-1px;border-width:3px 0 0 3px;border-radius:4px 0 0 0;}
 .qr-corner.tr{top:-1px;right:-1px;border-width:3px 3px 0 0;border-radius:0 4px 0 0;}
 .qr-corner.bl{bottom:-1px;left:-1px;border-width:0 0 3px 3px;border-radius:0 0 0 4px;}
 .qr-corner.br{bottom:-1px;right:-1px;border-width:0 3px 3px 0;border-radius:0 0 4px 0;}
-.qr-scan-line{
-  position:absolute;left:4px;right:4px;height:2px;
-  background:linear-gradient(90deg,transparent,var(--saffron),transparent);
-  top:10%;
-  animation:scanLine 2s ease-in-out infinite;
-}
+.qr-scan-line{position:absolute;left:4px;right:4px;height:2px;background:linear-gradient(90deg,transparent,var(--saffron),transparent);top:10%;animation:scanLine 2s ease-in-out infinite;}
 @keyframes scanLine{0%{top:10%;}50%{top:85%;}100%{top:10%;}}
-.qr-inner{
-  display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:16px;
-}
-.qr-cell{
-  width:16px;height:16px;border-radius:2px;
-  background:rgba(255,107,0,0.3);
-}
+.qr-inner{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:16px;}
+.qr-cell{width:16px;height:16px;border-radius:2px;background:rgba(255,107,0,0.3);}
 .qr-cell.on{background:rgba(255,107,0,0.7);}
-
-.phone-success{
-  margin-top:20px;text-align:center;
-  animation:successPop 2s 1.5s ease infinite;
-}
-@keyframes successPop{0%,80%,100%{transform:scale(1);opacity:1;}40%{transform:scale(1.08);opacity:0.9;}}
-.success-ring{
-  width:48px;height:48px;border-radius:50%;
-  background:rgba(40,200,100,0.15);border:1.5px solid rgba(40,200,100,0.4);
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 8px;
-}
-.check{font-size:22px;}
-.success-amt{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--white);}
+.phone-success{margin-top:20px;text-align:center;animation:successPop 2s 1.5s ease infinite;}
+@keyframes successPop{0%,80%,100%{transform:scale(1);}40%{transform:scale(1.08);}}
+.success-ring{width:48px;height:48px;border-radius:50%;background:rgba(40,200,100,0.15);border:1.5px solid rgba(40,200,100,0.4);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;}
+.success-amt{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;}
 .success-label{font-size:11px;color:rgba(40,200,100,0.8);letter-spacing:.5px;}
-
-/* Floating QR badges around phone */
-.phone-float{
-  position:absolute;
-  background:var(--navy2);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:10px 14px;
-  font-size:12px;
-  display:flex;align-items:center;gap:8px;
-  box-shadow:0 8px 24px rgba(0,0,0,0.3);
-}
+.phone-float{position:absolute;background:var(--navy2);border:1px solid var(--border);border-radius:12px;padding:10px 14px;font-size:12px;display:flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(0,0,0,0.3);}
 .phone-float-1{top:60px;left:-70px;animation:float1 4s ease-in-out infinite;}
 .phone-float-2{bottom:100px;right:-80px;animation:float2 5s ease-in-out infinite;}
 .phone-float-3{top:200px;right:-90px;animation:float1 6s ease-in-out infinite reverse;}
@@ -239,354 +79,161 @@ h1 .underline-gold::after{
 .float-dot{width:8px;height:8px;border-radius:50%;background:var(--saffron);}
 .float-dot.green{background:#28c864;}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-
-/* ── TRUST BAR ── */
-#trust{
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  background:rgba(255,255,255,0.02);
-  padding:22px 40px;
-  overflow:hidden;
-}
-.trust-inner{
-  display:flex;align-items:center;gap:40px;
-  font-size:13px;color:var(--muted);
-  white-space:nowrap;
-  animation:marquee 30s linear infinite;
-  width:max-content;
-}
-.trust-inner span{display:flex;align-items:center;gap:8px;}
+/* TRUST */
+#trust{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02);padding:22px 40px;overflow:hidden;}
+.trust-inner{display:flex;align-items:center;gap:40px;font-size:13px;color:var(--muted);white-space:nowrap;animation:marquee 30s linear infinite;width:max-content;}
 .trust-dot{width:4px;height:4px;background:var(--saffron);border-radius:50%;opacity:.5;}
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
-/* ── SECTIONS COMMON ── */
+/* SECTIONS */
 section{padding:100px 40px;position:relative;z-index:1;}
 .section-inner{max-width:1100px;margin:0 auto;}
-.section-tag{
-  font-size:12px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--saffron);font-weight:500;margin-bottom:16px;
-  display:block;
-}
-h2{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(28px,4vw,48px);
-  font-weight:800;line-height:1.15;
-  margin-bottom:16px;
-}
+.section-tag{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--saffron);font-weight:500;margin-bottom:16px;display:block;}
+h2{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.15;margin-bottom:16px;}
 .section-desc{color:var(--muted);font-size:18px;max-width:560px;font-weight:300;}
 
-/* ── HOW IT WORKS ── */
+/* HOW IT WORKS */
 #how{background:var(--navy2);}
-.steps{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
-  margin-top:60px;
-}
-.step{
-  background:var(--navy3);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:36px 32px;
-  position:relative;
-  overflow:hidden;
-  transition:border-color .3s,transform .3s;
-}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:60px;}
+.step{background:var(--navy3);border:1px solid var(--border);border-radius:var(--radius);padding:36px 32px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s;}
 .step:hover{border-color:rgba(255,107,0,0.3);transform:translateY(-4px);}
-.step::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--saffron),var(--gold));
-}
-.step-num{
-  font-family:'Syne',sans-serif;
-  font-size:64px;font-weight:800;
-  color:rgba(255,107,0,0.12);
-  line-height:1;margin-bottom:16px;
-}
+.step::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--saffron),var(--gold));}
+.step-num{font-family:'Syne',sans-serif;font-size:64px;font-weight:800;color:rgba(255,107,0,0.12);line-height:1;margin-bottom:16px;}
 .step-icon{font-size:32px;margin-bottom:16px;}
 .step h3{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;margin-bottom:10px;}
 .step p{color:var(--muted);font-size:15px;line-height:1.7;}
 
-/* ── ATITHI ── */
-#atithi{
-  background:linear-gradient(135deg,#1a0e00 0%,#2a1200 40%,#0f1a2e 100%);
-  position:relative;overflow:hidden;
-  text-align:center;
-}
-#atithi::before{
-  content:'';
-  position:absolute;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FF6B00' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  pointer-events:none;
-}
-.atithi-rule{
-  width:80px;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  margin:0 auto 40px;
-}
-.devanagari{
-  font-family:'Tiro Devanagari Hindi',serif;
-  font-size:clamp(36px,6vw,72px);
-  color:var(--gold);
-  line-height:1.4;
-  margin-bottom:12px;
-  text-shadow:0 0 60px rgba(255,179,71,0.3);
-}
-.transliteration{
-  font-size:14px;letter-spacing:6px;
-  color:rgba(255,179,71,0.6);
-  font-weight:500;margin-bottom:8px;
-  text-transform:uppercase;
-}
-.translation{
-  font-style:italic;
-  color:var(--gold);
-  font-size:20px;margin-bottom:40px;font-weight:300;
-}
-.atithi-diya{
-  font-size:48px;margin-bottom:24px;
-  animation:divaFlicker 3s ease-in-out infinite;
-}
+/* ATITHI */
+#atithi{background:linear-gradient(135deg,#1a0e00 0%,#2a1200 40%,#0f1a2e 100%);position:relative;overflow:hidden;text-align:center;}
+#atithi::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Ccircle cx='30' cy='30' r='2' fill='%23FF6B00' fill-opacity='0.04'/%3E%3C/g%3E%3C/svg%3E");pointer-events:none;}
+.atithi-rule{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 40px;}
+.devanagari{font-family:'Tiro Devanagari Hindi',serif;font-size:clamp(36px,6vw,72px);color:var(--gold);line-height:1.4;margin-bottom:12px;text-shadow:0 0 60px rgba(255,179,71,0.3);}
+.transliteration{font-size:14px;letter-spacing:6px;color:rgba(255,179,71,0.6);font-weight:500;margin-bottom:8px;text-transform:uppercase;}
+.translation{font-style:italic;color:var(--gold);font-size:20px;margin-bottom:40px;font-weight:300;}
+.atithi-diya{font-size:48px;margin-bottom:24px;animation:divaFlicker 3s ease-in-out infinite;}
 @keyframes divaFlicker{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.8;transform:scale(1.05);}}
-.atithi-text{
-  max-width:600px;margin:0 auto;
-  color:rgba(255,255,255,0.65);
-  font-size:17px;line-height:1.8;font-weight:300;
-}
+.atithi-text{max-width:600px;margin:0 auto;color:rgba(255,255,255,0.65);font-size:17px;line-height:1.8;font-weight:300;}
 
-/* ── RUPITOKENS ── */
+/* TOKENS */
 #tokens{background:var(--navy);}
-.tokens-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;
-  margin-top:60px;
-}
-.token-card{
-  background:linear-gradient(135deg,var(--navy2),var(--navy3));
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:28px;
-  position:relative;overflow:hidden;
-  transition:transform .3s,border-color .3s;
-}
+.tokens-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;margin-top:60px;}
+.token-card{background:linear-gradient(135deg,var(--navy2),var(--navy3));border:1px solid var(--border);border-radius:var(--radius);padding:28px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s;}
 .token-card:hover{transform:translateY(-6px);border-color:rgba(255,179,71,0.3);}
-.token-card::after{
-  content:'';
-  position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,179,71,0.05),transparent);
-  opacity:0;transition:opacity .3s;
-}
+.token-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,179,71,0.05),transparent);opacity:0;transition:opacity .3s;}
 .token-card:hover::after{opacity:1;}
-.token-card .shimmer{
-  position:absolute;top:0;left:-100%;width:60%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,179,71,0.06),transparent);
-  transition:left .6s;
-}
+.token-card .shimmer{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,179,71,0.06),transparent);transition:left .6s;}
 .token-card:hover .shimmer{left:150%;}
 .token-emoji{font-size:36px;margin-bottom:16px;}
-.token-label{
-  font-size:11px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--gold);margin-bottom:8px;font-weight:500;
-}
+.token-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:500;}
 .token-card h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;}
 .token-card p{color:var(--muted);font-size:14px;line-height:1.6;}
-
-/* Tier progress */
-.tier-bar{
-  margin-top:60px;
-  background:var(--navy2);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:36px;
-}
+.tier-bar{margin-top:60px;background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius);padding:36px;}
 .tier-bar h3{font-family:'Syne',sans-serif;font-size:20px;margin-bottom:24px;}
-.tiers{display:flex;gap:0;border-radius:50px;overflow:hidden;}
-.tier{
-  flex:1;padding:14px 20px;text-align:center;
-  font-size:13px;font-weight:500;
-}
+.tiers{display:flex;border-radius:50px;overflow:hidden;}
+.tier{flex:1;padding:14px 20px;text-align:center;font-size:13px;font-weight:500;}
 .tier.active{background:linear-gradient(90deg,var(--saffron),var(--gold));color:var(--navy);}
 .tier.next{background:rgba(255,107,0,0.1);color:var(--muted);}
 .tier.locked{background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.2);}
 
-/* ── WHERE IT WORKS ── */
+/* WHERE */
 #where{background:var(--navy2);}
-.category-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;
-  margin-top:60px;
-}
-.category-tile{
-  background:var(--navy3);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:24px 16px;
-  text-align:center;
-  transition:border-color .2s,background .2s,transform .2s;
-  cursor:default;
-}
-.category-tile:hover{
-  border-color:rgba(255,107,0,0.4);
-  background:rgba(255,107,0,0.05);
-  transform:translateY(-3px);
-}
-.category-tile .cat-icon{font-size:28px;margin-bottom:10px;}
-.category-tile p{font-size:13px;color:var(--muted);font-weight:400;}
+.category-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin-top:60px;}
+.category-tile{background:var(--navy3);border:1px solid var(--border);border-radius:12px;padding:24px 16px;text-align:center;transition:border-color .2s,background .2s,transform .2s;}
+.category-tile:hover{border-color:rgba(255,107,0,0.4);background:rgba(255,107,0,0.05);transform:translateY(-3px);}
+.cat-icon{font-size:28px;margin-bottom:10px;}
+.category-tile p{font-size:13px;color:var(--muted);}
 
-/* India map SVG accent */
-.map-accent{
-  position:absolute;right:40px;top:50%;transform:translateY(-50%);
-  opacity:0.04;pointer-events:none;
-}
-
-/* ── PARTNER ── */
+/* PARTNER */
 #partner{background:var(--navy3);}
 .partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:60px;}
-.partner-card{
-  background:var(--navy2);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:40px 36px;
-}
+.partner-card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius);padding:40px 36px;}
 .partner-card h3{font-family:'Syne',sans-serif;font-size:22px;margin-bottom:12px;}
 .partner-card p{color:var(--muted);font-size:15px;margin-bottom:28px;line-height:1.7;}
 .partner-icon{font-size:40px;margin-bottom:20px;}
 
-/* ── AMBASSADOR ── */
+/* AMBASSADOR */
 #ambassador{background:var(--navy);}
 .quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;}
-.quote-card{
-  background:var(--navy2);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:28px;
-  transition:transform .2s;
-}
+.quote-card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:transform .2s;}
 .quote-card:hover{transform:translateY(-4px);}
-.quote-avatar{
-  width:48px;height:48px;border-radius:50%;
-  background:linear-gradient(135deg,var(--saffron),var(--purple));
-  display:flex;align-items:center;justify-content:center;
-  font-size:20px;margin-bottom:16px;
-}
-.quote-text{
-  font-size:15px;color:rgba(255,255,255,0.75);
-  line-height:1.7;margin-bottom:16px;font-style:italic;
-}
+.quote-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--saffron),#5A35A8);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;}
+.quote-text{font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;margin-bottom:16px;font-style:italic;}
 .quote-name{font-weight:500;font-size:14px;}
 .quote-role{font-size:12px;color:var(--muted);}
 .stars{color:var(--gold);font-size:13px;margin-bottom:12px;}
 
-/* ── GLOBAL ── */
-#global{
-  background:var(--navy2);
-  text-align:center;
-}
-.global-flags{
-  display:flex;justify-content:center;gap:12px;
-  font-size:32px;margin:32px 0;
-  flex-wrap:wrap;
-}
-.flag-item{
-  background:var(--navy3);border:1px solid var(--border);
-  border-radius:12px;padding:12px 16px;
-  font-size:24px;transition:transform .2s;
-  position:relative;
-}
+/* GLOBAL */
+#global{background:var(--navy2);text-align:center;}
+.global-flags{display:flex;justify-content:center;gap:12px;margin:32px 0;flex-wrap:wrap;}
+.flag-item{background:var(--navy3);border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:24px;transition:transform .2s;position:relative;}
 .flag-item:hover{transform:scale(1.1);}
-.flag-item .soon{
-  position:absolute;top:-6px;right:-6px;
-  background:var(--saffron);color:var(--white);
-  font-size:8px;font-weight:700;letter-spacing:1px;
-  padding:2px 6px;border-radius:50px;
-}
-.connect-line{
-  width:2px;height:40px;
-  background:linear-gradient(to bottom,var(--saffron),transparent);
-  margin:0 auto;
-}
+.flag-item .soon{position:absolute;top:-6px;right:-6px;background:var(--saffron);color:var(--white);font-size:8px;font-weight:700;letter-spacing:1px;padding:2px 6px;border-radius:50px;}
+.connect-line{width:2px;height:40px;background:linear-gradient(to bottom,var(--saffron),transparent);margin:0 auto;}
 
-/* ── DOWNLOAD CTA ── */
-#download{
-  background:linear-gradient(135deg,#1a0800 0%,#0f1520 100%);
-  text-align:center;
-  position:relative;overflow:hidden;
-}
-#download::before{
-  content:'';position:absolute;
-  width:600px;height:600px;border-radius:50%;
-  background:rgba(255,107,0,0.12);
-  top:50%;left:50%;transform:translate(-50%,-50%);
-  filter:blur(80px);pointer-events:none;
-}
-.store-btns{
-  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
-  margin-top:40px;
-}
-.store-btn{
-  display:flex;align-items:center;gap:12px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.15);
-  border-radius:14px;padding:14px 24px;
-  text-decoration:none;color:var(--white);
-  transition:border-color .2s,background .2s;
-}
+/* ══════════════════════════════════════
+   WAITLIST SECTION
+══════════════════════════════════════ */
+#waitlist{background:linear-gradient(135deg,#0d1f10 0%,#0A1628 50%,#1a0800 100%);position:relative;overflow:hidden;}
+#waitlist::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:rgba(19,136,8,0.08);top:50%;left:5%;transform:translateY(-50%);filter:blur(60px);pointer-events:none;}
+#waitlist::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:rgba(255,107,0,0.1);top:50%;right:5%;transform:translateY(-50%);filter:blur(60px);pointer-events:none;}
+.waitlist-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:1;}
+.waitlist-count{display:inline-flex;align-items:center;gap:10px;background:rgba(19,136,8,0.15);border:1px solid rgba(19,136,8,0.3);padding:8px 20px;border-radius:50px;font-size:13px;color:#4ade80;font-weight:500;margin-bottom:28px;}
+.waitlist-count .wdot{width:8px;height:8px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite;}
+.waitlist-form-box{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:48px 40px;margin-top:48px;backdrop-filter:blur(10px);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.form-group{display:flex;flex-direction:column;gap:8px;}
+.form-group label{font-size:13px;color:var(--muted);font-weight:500;text-align:left;}
+.form-group input,.form-group select{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 18px;color:var(--white);font-size:15px;font-family:inherit;outline:none;transition:border-color .2s,background .2s;-webkit-appearance:none;appearance:none;}
+.form-group input::placeholder{color:rgba(255,255,255,0.25);}
+.form-group input:focus,.form-group select:focus{border-color:rgba(255,107,0,0.5);background:rgba(255,107,0,0.04);}
+.form-group select option{background:#111f38;color:var(--white);}
+.waitlist-submit{width:100%;padding:16px 32px;background:linear-gradient(90deg,var(--saffron),#ff8c00);color:var(--white);border:none;border-radius:50px;font-size:17px;font-weight:500;font-family:inherit;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 0 30px rgba(255,107,0,0.35);margin-top:8px;}
+.waitlist-submit:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(255,107,0,0.5);}
+.form-privacy{font-size:12px;color:rgba(255,255,255,0.3);margin-top:14px;}
+.waitlist-success{display:none;text-align:center;padding:20px 0;}
+.success-big-icon{width:80px;height:80px;border-radius:50%;background:rgba(19,136,8,0.15);border:2px solid rgba(19,136,8,0.4);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 24px;}
+.waitlist-success h3{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;margin-bottom:12px;}
+.waitlist-success p{color:var(--muted);font-size:16px;line-height:1.7;}
+
+/* DOWNLOAD */
+#download{background:linear-gradient(135deg,#1a0800 0%,#0f1520 100%);text-align:center;position:relative;overflow:hidden;}
+#download::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:rgba(255,107,0,0.12);top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(80px);pointer-events:none;}
+.store-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:40px;}
+.store-btn{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:14px;padding:14px 24px;text-decoration:none;color:var(--white);transition:border-color .2s,background .2s;}
 .store-btn:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);}
 .store-icon{font-size:28px;}
 .store-text small{display:block;font-size:10px;color:var(--muted);letter-spacing:1px;}
 .store-text strong{font-size:16px;font-weight:500;}
 
-/* ── FOOTER ── */
-footer{
-  background:rgba(0,0,0,0.3);
-  border-top:1px solid var(--border);
-  padding:60px 40px 40px;
-}
+/* FOOTER */
+footer{background:rgba(0,0,0,0.3);border-top:1px solid var(--border);padding:60px 40px 40px;}
 .footer-inner{max-width:1100px;margin:0 auto;}
-.footer-top{
-  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;
-  margin-bottom:48px;
-}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:48px;}
 .footer-logo-area .tagline{color:var(--muted);font-size:14px;margin-top:12px;max-width:280px;}
 .footer-links h4{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
 .footer-links ul{list-style:none;}
 .footer-links li{margin-bottom:10px;}
 .footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:14px;transition:color .2s;}
 .footer-links a:hover{color:var(--white);}
-.footer-bottom{
-  border-top:1px solid var(--border);
-  padding-top:28px;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:16px;
-}
+.footer-bottom{border-top:1px solid var(--border);padding-top:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
 .legal{font-size:12px;color:rgba(255,255,255,0.3);max-width:640px;line-height:1.6;}
 .social-links{display:flex;gap:12px;}
-.social-link{
-  width:36px;height:36px;border-radius:50%;
-  border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  text-decoration:none;font-size:15px;
-  transition:border-color .2s,background .2s;
-}
+.social-link{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:15px;transition:border-color .2s,background .2s;}
 .social-link:hover{border-color:var(--saffron);background:rgba(255,107,0,0.1);}
 
-/* ── SCROLL REVEAL ── */
+/* REVEAL */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 .reveal-delay-1{transition-delay:.1s;}
 .reveal-delay-2{transition-delay:.2s;}
 .reveal-delay-3{transition-delay:.3s;}
 
-/* ── MOBILE ── */
 @media(max-width:768px){
-  nav{padding:16px 20px;}
-  .nav-links{display:none;}
-  #hero{padding:100px 20px 60px;}
-  .hero-inner{grid-template-columns:1fr;}
-  .hero-phone{display:none;}
-  section{padding:70px 20px;}
-  .steps{grid-template-columns:1fr;}
-  .partner-grid{grid-template-columns:1fr;}
-  .quote-grid{grid-template-columns:1fr;}
-  .footer-top{grid-template-columns:1fr 1fr;}
-  .phone-float{display:none;}
+  nav{padding:16px 20px;}.nav-links{display:none;}
+  #hero{padding:100px 20px 60px;}.hero-inner{grid-template-columns:1fr;}.hero-phone{display:none;}
+  section{padding:70px 20px;}.steps{grid-template-columns:1fr;}.partner-grid{grid-template-columns:1fr;}
+  .quote-grid{grid-template-columns:1fr;}.footer-top{grid-template-columns:1fr 1fr;}.phone-float{display:none;}
+  .form-row{grid-template-columns:1fr;}.waitlist-form-box{padding:32px 20px;}
 }
 </style>
 </head>
@@ -595,86 +242,51 @@ footer{
 <!-- NAV -->
 <nav id="navbar">
   <a href="#" class="logo">
-    <svg class="logo-svg" viewBox="0 0 220 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Rupee symbol -->
-      <text x="2" y="36" font-family="Arial Black,Georgia,serif" font-size="38" font-weight="900" fill="#FF6B00">₹</text>
-      <!-- UPI badge pill -->
-      <rect x="40" y="6" width="60" height="32" rx="16" fill="#FF6B00"/>
-      <rect x="70" y="6" width="30" height="32" rx="0" fill="#5A35A8"/>
-      <rect x="70" y="6" width="30" height="32" rx="0" fill="#5A35A8"/>
-      <!-- right side rounded -->
-      <path d="M70 6 H86 Q100 6 100 22 V22 Q100 38 86 38 H70 Z" fill="#5A35A8"/>
-      <!-- left side text -->
-      <text x="55" y="26" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="800" fill="white" text-anchor="middle" letter-spacing="1">UPI</text>
-      <!-- lightning bolt -->
-      <polygon points="82,12 77,22 81,22 76,34 87,20 82,20" fill="white" opacity="0.9"/>
-      <!-- connector dots -->
-      <circle cx="35" cy="22" r="3" fill="#FF6B00"/>
-      <circle cx="106" cy="22" r="3" fill="#5A35A8"/>
-      <!-- Pay text -->
-      <text x="180" y="34" font-family="Arial Black,sans-serif" font-size="32" font-weight="900" fill="white" text-anchor="middle">Pay</text>
+    <svg height="40" viewBox="0 0 210 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Back chevron — India green (UPI-inspired) -->
+      <polygon points="20,4 46,24 20,44 28,44 54,24 28,4" fill="#138808" opacity="0.88"/>
+      <!-- Front chevron — saffron -->
+      <polygon points="6,4 32,24 6,44 15,44 41,24 15,4" fill="#FF6B00"/>
+      <!-- ₹ in white -->
+      <text x="10" y="32" font-family="Georgia,Times New Roman,serif" font-size="18" font-weight="900" fill="white">₹</text>
+      <!-- Wordmark -->
+      <text x="60" y="34" font-family="Arial Black,sans-serif" font-size="26" font-weight="900" fill="white">Rupi</text>
+      <text x="130" y="34" font-family="Arial Black,sans-serif" font-size="26" font-weight="900" fill="#FF6B00">Pay</text>
     </svg>
   </a>
   <ul class="nav-links">
     <li><a href="#how">How It Works</a></li>
     <li><a href="#tokens">Rewards</a></li>
     <li><a href="#partner">Partners</a></li>
-    <li><a href="#global">Global</a></li>
+    <li><a href="#waitlist">Waitlist</a></li>
   </ul>
-  <a href="#download" class="nav-cta">Download App</a>
+  <a href="#waitlist" class="nav-cta">✉ Join Waitlist</a>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-glow glow-1"></div>
-  <div class="hero-glow glow-2"></div>
-  <div class="hero-glow glow-3"></div>
-
+  <div class="hero-glow glow-1"></div><div class="hero-glow glow-2"></div><div class="hero-glow glow-3"></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-badge">
-        <span></span>
-        Now live across 40+ countries · RBI-compliant
-      </div>
-      <h1>
-        Pay Like a <span class="highlight">Local.</span><br>
-        Explore Like a <span class="underline-gold">Guest.</span>
-      </h1>
-      <p class="hero-sub">
-        India runs on QR codes. Now so can you. RupiPay gives foreign visitors instant UPI payment access — no Indian bank account needed.
-      </p>
+      <div class="hero-badge"><span></span>Now live across 40+ countries · RBI-compliant</div>
+      <h1>Pay Like a <span class="highlight">Local.</span><br>Explore Like a <span class="underline-gold">Guest.</span></h1>
+      <p class="hero-sub">India runs on QR codes. Now so can you. RupiPay gives foreign visitors instant UPI payment access — no Indian bank account needed.</p>
       <div class="hero-btns">
-        <a href="#download" class="btn-primary">⬇ Download App</a>
+        <a href="#waitlist" class="btn-primary">✉ Join the Waitlist</a>
         <a href="#how" class="btn-ghost">Learn How It Works</a>
       </div>
     </div>
-
     <div class="hero-phone">
-      <!-- Floating badges -->
-      <div class="phone-float phone-float-1">
-        <div class="float-dot"></div>
-        <span style="font-size:13px;color:var(--muted);">₹ 320 · Chai stall, Connaught Place</span>
-      </div>
-      <div class="phone-float phone-float-2">
-        <div class="float-dot green"></div>
-        <span style="font-size:13px;color:rgba(40,200,100,0.9);">Payment Successful</span>
-      </div>
-      <div class="phone-float phone-float-3">
-        <span style="font-size:13px;color:var(--gold);">🏅 +50 RupiTokens earned!</span>
-      </div>
-
+      <div class="phone-float phone-float-1"><div class="float-dot"></div><span style="font-size:13px;color:var(--muted);">₹ 320 · Chai stall, Connaught Place</span></div>
+      <div class="phone-float phone-float-2"><div class="float-dot green"></div><span style="font-size:13px;color:rgba(40,200,100,0.9);">Payment Successful</span></div>
+      <div class="phone-float phone-float-3"><span style="font-size:13px;color:var(--gold);">🏅 +50 RupiTokens earned!</span></div>
       <div class="phone-frame">
         <div class="phone-notch"></div>
         <div class="phone-screen-label">SCAN TO PAY</div>
-
         <div class="qr-box">
-          <div class="qr-corner tl"></div>
-          <div class="qr-corner tr"></div>
-          <div class="qr-corner bl"></div>
-          <div class="qr-corner br"></div>
+          <div class="qr-corner tl"></div><div class="qr-corner tr"></div><div class="qr-corner bl"></div><div class="qr-corner br"></div>
           <div class="qr-scan-line"></div>
           <div class="qr-inner">
-            <!-- Simple QR pattern cells -->
             <div class="qr-cell on"></div><div class="qr-cell on"></div><div class="qr-cell"></div><div class="qr-cell on"></div><div class="qr-cell on"></div>
             <div class="qr-cell on"></div><div class="qr-cell"></div><div class="qr-cell on"></div><div class="qr-cell"></div><div class="qr-cell on"></div>
             <div class="qr-cell"></div><div class="qr-cell on"></div><div class="qr-cell on"></div><div class="qr-cell on"></div><div class="qr-cell"></div>
@@ -682,15 +294,11 @@ footer{
             <div class="qr-cell on"></div><div class="qr-cell on"></div><div class="qr-cell"></div><div class="qr-cell on"></div><div class="qr-cell on"></div>
           </div>
         </div>
-
         <div class="phone-success">
-          <div class="success-ring">
-            <div class="check">✓</div>
-          </div>
+          <div class="success-ring"><div class="check">✓</div></div>
           <div class="success-amt">₹ 840.00</div>
           <div class="success-label">PAYMENT COMPLETE · UPI</div>
         </div>
-
         <div style="margin-top:auto;width:100%;background:rgba(255,107,0,0.08);border-radius:12px;padding:12px;text-align:center;border:1px solid rgba(255,107,0,0.15);">
           <div style="font-size:11px;color:var(--muted);">RupiTokens Balance</div>
           <div style="font-family:'Syne',sans-serif;font-size:20px;color:var(--gold);font-weight:700;">1,240 🏅</div>
@@ -703,276 +311,205 @@ footer{
 <!-- TRUST BAR -->
 <div id="trust">
   <div class="trust-inner">
-    <span>✦ Trusted by visitors from 40+ countries</span>
-    <div class="trust-dot"></div>
-    <span>🇺🇸 🇬🇧 🇦🇺 🇸🇬 🇦🇪 🇨🇦 🇩🇪 🇫🇷 🇯🇵 🇳🇿</span>
-    <div class="trust-dot"></div>
-    <span>✦ Built on India's UPI infrastructure</span>
-    <div class="trust-dot"></div>
-    <span>✦ RBI-compliant PPI Wallet</span>
-    <div class="trust-dot"></div>
-    <span>✦ Instant onboarding at major airports</span>
-    <div class="trust-dot"></div>
-    <span>✦ Digital passport KYC · Under 3 minutes</span>
-    <div class="trust-dot"></div>
-    <!-- duplicate for seamless marquee -->
-    <span>✦ Trusted by visitors from 40+ countries</span>
-    <div class="trust-dot"></div>
-    <span>🇺🇸 🇬🇧 🇦🇺 🇸🇬 🇦🇪 🇨🇦 🇩🇪 🇫🇷 🇯🇵 🇳🇿</span>
-    <div class="trust-dot"></div>
-    <span>✦ Built on India's UPI infrastructure</span>
-    <div class="trust-dot"></div>
-    <span>✦ RBI-compliant PPI Wallet</span>
-    <div class="trust-dot"></div>
-    <span>✦ Instant onboarding at major airports</span>
-    <div class="trust-dot"></div>
+    <span>✦ Trusted by visitors from 40+ countries</span><div class="trust-dot"></div>
+    <span>🇺🇸 🇬🇧 🇦🇺 🇸🇬 🇦🇪 🇨🇦 🇩🇪 🇫🇷 🇯🇵 🇳🇿</span><div class="trust-dot"></div>
+    <span>✦ Built on India's UPI infrastructure</span><div class="trust-dot"></div>
+    <span>✦ RBI-compliant PPI Wallet</span><div class="trust-dot"></div>
+    <span>✦ Instant onboarding at major airports</span><div class="trust-dot"></div>
+    <span>✦ Digital passport KYC · Under 3 minutes</span><div class="trust-dot"></div>
+    <span>✦ Trusted by visitors from 40+ countries</span><div class="trust-dot"></div>
+    <span>🇺🇸 🇬🇧 🇦🇺 🇸🇬 🇦🇪 🇨🇦 🇩🇪 🇫🇷 🇯🇵 🇳🇿</span><div class="trust-dot"></div>
+    <span>✦ Built on India's UPI infrastructure</span><div class="trust-dot"></div>
+    <span>✦ RBI-compliant PPI Wallet</span><div class="trust-dot"></div>
+    <span>✦ Instant onboarding at major airports</span><div class="trust-dot"></div>
     <span>✦ Digital passport KYC · Under 3 minutes</span>
   </div>
 </div>
 
 <!-- HOW IT WORKS -->
-<section id="how">
-  <div class="section-inner">
-    <span class="section-tag reveal">How It Works</span>
-    <h2 class="reveal">Up and running in<br>3 minutes</h2>
-    <p class="section-desc reveal">From landing to paying — before your cab reaches the hotel.</p>
-
-    <div class="steps">
-      <div class="step reveal reveal-delay-1">
-        <div class="step-num">01</div>
-        <div class="step-icon">🛬</div>
-        <h3>Land &amp; Scan</h3>
-        <p>Arrive in India. Open RupiPay. Scan your passport for instant digital KYC. No paperwork, no queues, no Indian phone number needed.</p>
-      </div>
-      <div class="step reveal reveal-delay-2">
-        <div class="step-num">02</div>
-        <div class="step-icon">💳</div>
-        <h3>Load &amp; Pay</h3>
-        <p>Add money via your foreign debit or credit card. Then scan any QR code in India — street food stalls, cab rides, luxury hotels, everything.</p>
-      </div>
-      <div class="step reveal reveal-delay-3">
-        <div class="step-num">03</div>
-        <div class="step-icon">🏅</div>
-        <h3>Earn &amp; Unlock</h3>
-        <p>Every payment earns RupiTokens. Unlock exclusive deals with partner brands, experiences, and city rewards as you explore India.</p>
-      </div>
-    </div>
+<section id="how"><div class="section-inner">
+  <span class="section-tag reveal">How It Works</span>
+  <h2 class="reveal">Up and running in 3 minutes</h2>
+  <p class="section-desc reveal">From landing to paying — before your cab reaches the hotel.</p>
+  <div class="steps">
+    <div class="step reveal reveal-delay-1"><div class="step-num">01</div><div class="step-icon">🛬</div><h3>Land &amp; Scan</h3><p>Arrive in India. Open RupiPay. Scan your passport for instant digital KYC. No paperwork, no queues, no Indian phone number needed.</p></div>
+    <div class="step reveal reveal-delay-2"><div class="step-num">02</div><div class="step-icon">💳</div><h3>Load &amp; Pay</h3><p>Add money via your foreign debit or credit card. Then scan any QR code in India — street food, cab rides, luxury hotels, everything.</p></div>
+    <div class="step reveal reveal-delay-3"><div class="step-num">03</div><div class="step-icon">🏅</div><h3>Earn &amp; Unlock</h3><p>Every payment earns RupiTokens. Unlock exclusive deals with partner brands and experiences as you explore India.</p></div>
   </div>
-</section>
+</div></section>
 
 <!-- ATITHI DEVO BHAVA -->
-<section id="atithi">
-  <div class="section-inner" style="text-align:center;position:relative;z-index:1;">
-    <div class="atithi-diya reveal">🪔</div>
-    <div class="atithi-rule reveal"></div>
-
-    <div class="devanagari reveal">अतिथि देवो भव</div>
-    <div class="transliteration reveal">Atithi Devo Bhava</div>
-    <div class="translation reveal">"The Guest is God"</div>
-
-    <div class="atithi-rule reveal"></div>
-
-    <p class="atithi-text reveal">
-      For thousands of years, India has welcomed every visitor as a divine guest.
-      RupiPay is built on that same belief — that every foreign visitor deserves
-      to experience India without barriers, friction, or confusion.
-      <br><br>
-      <em style="color:var(--gold);">You are our Atithi. We've got you covered.</em>
-    </p>
-  </div>
-</section>
+<section id="atithi"><div class="section-inner" style="text-align:center;position:relative;z-index:1;">
+  <div class="atithi-diya reveal">🪔</div>
+  <div class="atithi-rule reveal"></div>
+  <div class="devanagari reveal">अतिथि देवो भव</div>
+  <div class="transliteration reveal">Atithi Devo Bhava</div>
+  <div class="translation reveal">"The Guest is God"</div>
+  <div class="atithi-rule reveal"></div>
+  <p class="atithi-text reveal">For thousands of years, India has welcomed every visitor as a divine guest. RupiPay is built on that same belief — that every foreign visitor deserves to experience India without barriers, friction, or confusion.<br><br><em style="color:var(--gold);">You are our Atithi. We've got you covered.</em></p>
+</div></section>
 
 <!-- RUPITOKENS -->
-<section id="tokens">
-  <div class="section-inner">
-    <span class="section-tag reveal">RupiTokens</span>
-    <h2 class="reveal">Every Rupee<br>Earns You More</h2>
-    <p class="section-desc reveal">Spend anywhere, unlock exclusive experiences. The more you explore, the more you earn.</p>
-
-    <div class="tokens-grid">
-      <div class="token-card reveal reveal-delay-1">
-        <div class="shimmer"></div>
-        <div class="token-emoji">✈️</div>
-        <div class="token-label">Arrival Token</div>
-        <h3>Airport Lounge Access</h3>
-        <p>Unlocked the moment you complete your first payment. Start your India trip in comfort.</p>
-      </div>
-      <div class="token-card reveal reveal-delay-2">
-        <div class="shimmer"></div>
-        <div class="token-emoji">🏨</div>
-        <div class="token-label">Stay Token</div>
-        <h3>Hotel Room Upgrade</h3>
-        <p>Partner hotels across India. Spend ₹5,000+ to unlock complimentary upgrades.</p>
-      </div>
-      <div class="token-card reveal reveal-delay-3">
-        <div class="shimmer"></div>
-        <div class="token-emoji">🍛</div>
-        <div class="token-label">Taste Token</div>
-        <h3>20% Off at 500+ Restaurants</h3>
-        <p>From Michelin-starred to the best street food — your tokens, your feast.</p>
-      </div>
-      <div class="token-card reveal reveal-delay-1">
-        <div class="shimmer"></div>
-        <div class="token-emoji">🚖</div>
-        <div class="token-label">Move Token</div>
-        <h3>Free Cab Rides</h3>
-        <p>Partner credits with Ola and Uber India. Get around effortlessly.</p>
-      </div>
-      <div class="token-card reveal reveal-delay-2">
-        <div class="shimmer"></div>
-        <div class="token-emoji">🏏</div>
-        <div class="token-label">IPL Token</div>
-        <h3>Exclusive Fan Experiences</h3>
-        <p>Meet-and-greet access, hospitality boxes, and match-day perks during IPL season.</p>
-      </div>
-      <div class="token-card reveal reveal-delay-3">
-        <div class="shimmer"></div>
-        <div class="token-emoji">🗺️</div>
-        <div class="token-label">Explorer Token</div>
-        <h3>Curated Tour Packages</h3>
-        <p>Taj Mahal to Kerala backwaters. Unlock guided experiences with top operators.</p>
-      </div>
-    </div>
-
-    <div class="tier-bar reveal" style="margin-top:40px;">
-      <h3>Your Journey Tier</h3>
-      <div class="tiers">
-        <div class="tier active">🌱 Explorer</div>
-        <div class="tier next">🧳 Traveller</div>
-        <div class="tier locked">👑 VIP Guest</div>
-      </div>
-      <p style="margin-top:16px;font-size:13px;color:var(--muted);">Spend ₹15,000+ to reach Traveller · ₹50,000+ for VIP Guest status</p>
-    </div>
+<section id="tokens"><div class="section-inner">
+  <span class="section-tag reveal">RupiTokens</span>
+  <h2 class="reveal">Every Rupee Earns You More</h2>
+  <p class="section-desc reveal">Spend anywhere, unlock exclusive experiences.</p>
+  <div class="tokens-grid">
+    <div class="token-card reveal reveal-delay-1"><div class="shimmer"></div><div class="token-emoji">✈️</div><div class="token-label">Arrival Token</div><h3>Airport Lounge Access</h3><p>Unlocked the moment you complete your first payment.</p></div>
+    <div class="token-card reveal reveal-delay-2"><div class="shimmer"></div><div class="token-emoji">🏨</div><div class="token-label">Stay Token</div><h3>Hotel Room Upgrade</h3><p>Spend ₹5,000+ to unlock complimentary upgrades at partner hotels.</p></div>
+    <div class="token-card reveal reveal-delay-3"><div class="shimmer"></div><div class="token-emoji">🍛</div><div class="token-label">Taste Token</div><h3>20% Off at 500+ Restaurants</h3><p>From Michelin-starred to the best street food.</p></div>
+    <div class="token-card reveal reveal-delay-1"><div class="shimmer"></div><div class="token-emoji">🚖</div><div class="token-label">Move Token</div><h3>Free Cab Rides</h3><p>Partner credits with Ola and Uber India.</p></div>
+    <div class="token-card reveal reveal-delay-2"><div class="shimmer"></div><div class="token-emoji">🏏</div><div class="token-label">IPL Token</div><h3>Exclusive Fan Experiences</h3><p>Meet-and-greet access and hospitality boxes during IPL season.</p></div>
+    <div class="token-card reveal reveal-delay-3"><div class="shimmer"></div><div class="token-emoji">🗺️</div><div class="token-label">Explorer Token</div><h3>Curated Tour Packages</h3><p>Taj Mahal to Kerala backwaters with top operators.</p></div>
   </div>
-</section>
+  <div class="tier-bar reveal">
+    <h3>Your Journey Tier</h3>
+    <div class="tiers"><div class="tier active">🌱 Explorer</div><div class="tier next">🧳 Traveller</div><div class="tier locked">👑 VIP Guest</div></div>
+    <p style="margin-top:16px;font-size:13px;color:var(--muted);">Spend ₹15,000+ to reach Traveller · ₹50,000+ for VIP Guest status</p>
+  </div>
+</div></section>
 
 <!-- WHERE IT WORKS -->
-<section id="where">
-  <div class="section-inner" style="position:relative;">
-    <span class="section-tag reveal">Coverage</span>
-    <h2 class="reveal">Accepted Everywhere<br>in India</h2>
-    <p class="section-desc reveal">If it has a QR code, RupiPay works. That's literally everywhere.</p>
-
-    <div class="category-grid">
-      <div class="category-tile reveal"><div class="cat-icon">🍜</div><p>Street Food</p></div>
-      <div class="category-tile reveal"><div class="cat-icon">🏨</div><p>Luxury Hotels</p></div>
-      <div class="category-tile reveal"><div class="cat-icon">🛺</div><p>Auto Rickshaws</p></div>
-      <div class="category-tile reveal"><div class="cat-icon">🛍️</div><p>Shopping Malls</p></div>
-      <div class="category-tile reveal"><div class="cat-icon">🗺️</div><p>Tour Packages</p></div>
-      <div class="category-tile reveal"><div class="cat-icon">✈️</div><p>Airports</p></div>
-      <div class="category-tile reveal"><div class="cat-icon">🍻</div><p>Pubs &amp; Bars</p></div>
-      <div class="category-tile reveal"><div class="cat-icon">💊</div><p>Pharmacies</p></div>
-      <div class="category-tile reveal"><div class="cat-icon">🏛️</div><p>Monuments</p></div>
-      <div class="category-tile reveal"><div class="cat-icon">🚕</div><p>Cab Services</p></div>
-      <div class="category-tile reveal"><div class="cat-icon">☕</div><p>Cafés</p></div>
-      <div class="category-tile reveal"><div class="cat-icon">🏥</div><p>Clinics</p></div>
-    </div>
+<section id="where"><div class="section-inner">
+  <span class="section-tag reveal">Coverage</span>
+  <h2 class="reveal">Accepted Everywhere in India</h2>
+  <p class="section-desc reveal">If it has a QR code, RupiPay works. That's literally everywhere.</p>
+  <div class="category-grid">
+    <div class="category-tile reveal"><div class="cat-icon">🍜</div><p>Street Food</p></div>
+    <div class="category-tile reveal"><div class="cat-icon">🏨</div><p>Luxury Hotels</p></div>
+    <div class="category-tile reveal"><div class="cat-icon">🛺</div><p>Auto Rickshaws</p></div>
+    <div class="category-tile reveal"><div class="cat-icon">🛍️</div><p>Shopping Malls</p></div>
+    <div class="category-tile reveal"><div class="cat-icon">🗺️</div><p>Tour Packages</p></div>
+    <div class="category-tile reveal"><div class="cat-icon">✈️</div><p>Airports</p></div>
+    <div class="category-tile reveal"><div class="cat-icon">🍻</div><p>Pubs &amp; Bars</p></div>
+    <div class="category-tile reveal"><div class="cat-icon">💊</div><p>Pharmacies</p></div>
+    <div class="category-tile reveal"><div class="cat-icon">🏛️</div><p>Monuments</p></div>
+    <div class="category-tile reveal"><div class="cat-icon">🚕</div><p>Cab Services</p></div>
+    <div class="category-tile reveal"><div class="cat-icon">☕</div><p>Cafés</p></div>
+    <div class="category-tile reveal"><div class="cat-icon">🏥</div><p>Clinics</p></div>
   </div>
-</section>
+</div></section>
 
 <!-- PARTNER -->
-<section id="partner">
-  <div class="section-inner">
-    <span class="section-tag reveal">For Businesses</span>
-    <h2 class="reveal">Reach Every Foreign Visitor<br>the Moment They Land</h2>
-    <p class="section-desc reveal">High-intent, high-spending tourists — reached at exactly the right moment.</p>
-
-    <div class="partner-grid">
-      <div class="partner-card reveal">
-        <div class="partner-icon">📣</div>
-        <h3>For Brands &amp; Merchants</h3>
-        <p>Advertise directly to high-spending foreign tourists through our in-app RupiToken ecosystem. Your offer appears when visitors are actively spending — not scrolling a feed.</p>
-        <a href="#" class="btn-primary" style="font-size:14px;padding:12px 24px;display:inline-flex;">Become a Partner →</a>
-      </div>
-      <div class="partner-card reveal reveal-delay-1">
-        <div class="partner-icon">🏨</div>
-        <h3>For Hotels, Airports &amp; Tour Operators</h3>
-        <p>White-label our onboarding kiosk and offer seamless UPI payments to your international guests from check-in. Zero integration lift for your team.</p>
-        <a href="#" class="btn-primary" style="font-size:14px;padding:12px 24px;display:inline-flex;">Get Whitelabel Kit →</a>
-      </div>
-    </div>
+<section id="partner"><div class="section-inner">
+  <span class="section-tag reveal">For Businesses</span>
+  <h2 class="reveal">Reach Every Foreign Visitor the Moment They Land</h2>
+  <p class="section-desc reveal">High-intent, high-spending tourists — at exactly the right moment.</p>
+  <div class="partner-grid">
+    <div class="partner-card reveal"><div class="partner-icon">📣</div><h3>For Brands &amp; Merchants</h3><p>Advertise directly to high-spending foreign tourists through our in-app RupiToken ecosystem. Your offer appears when visitors are actively spending — not scrolling a feed.</p><a href="#waitlist" class="btn-primary" style="font-size:14px;padding:12px 24px;">Become a Partner →</a></div>
+    <div class="partner-card reveal reveal-delay-1"><div class="partner-icon">🏨</div><h3>For Hotels, Airports &amp; Tour Operators</h3><p>White-label our onboarding kiosk and offer seamless UPI payments to your international guests from check-in. Zero integration lift for your team.</p><a href="#waitlist" class="btn-primary" style="font-size:14px;padding:12px 24px;">Get Whitelabel Kit →</a></div>
   </div>
-</section>
+</div></section>
 
 <!-- AMBASSADOR -->
-<section id="ambassador">
+<section id="ambassador"><div class="section-inner">
+  <span class="section-tag reveal">Social Proof</span>
+  <h2 class="reveal">As Seen By the World</h2>
+  <div class="quote-grid">
+    <div class="quote-card reveal reveal-delay-1"><div class="quote-avatar">🏏</div><div class="stars">★★★★★</div><p class="quote-text">"Playing in the IPL every year, I used to always struggle with cash in India. RupiPay changed everything — I scan, pay, done. Brilliant."</p><div class="quote-name">Ben Mitchell</div><div class="quote-role">International Cricketer · IPL Player</div></div>
+    <div class="quote-card reveal reveal-delay-2"><div class="quote-avatar">🎬</div><div class="stars">★★★★★</div><p class="quote-text">"I've made 12 India travel videos and the #1 question is always about payments. RupiPay is the answer I've been waiting to give my audience."</p><div class="quote-name">Jamie Travels</div><div class="quote-role">Travel Creator · 2.8M subscribers</div></div>
+    <div class="quote-card reveal reveal-delay-3"><div class="quote-avatar">💼</div><div class="stars">★★★★★</div><p class="quote-text">"I visited Mumbai for a conference and RupiPay was the most useful app I had. Set up at the airport, paid everywhere — even the vada pav stall outside."</p><div class="quote-name">Sarah K.</div><div class="quote-role">Business Traveller · London, UK</div></div>
+  </div>
+</div></section>
+
+<!-- GLOBAL -->
+<section id="global"><div class="section-inner" style="text-align:center;">
+  <span class="section-tag reveal">Coming Soon</span>
+  <h2 class="reveal">Use RupiPay in Reverse</h2>
+  <p class="section-desc reveal" style="margin:0 auto;">Indian travelers abroad will soon be able to scan and pay internationally as UPI goes global.</p>
+  <div class="connect-line reveal" style="margin:32px auto;"></div>
+  <div class="global-flags reveal">
+    <div class="flag-item">🇮🇳<div style="font-size:10px;color:var(--muted);margin-top:4px;">India</div></div>
+    <div style="display:flex;align-items:center;color:var(--saffron);font-size:20px;">→</div>
+    <div class="flag-item">🇸🇬<div class="soon">SOON</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">Singapore</div></div>
+    <div class="flag-item">🇦🇪<div class="soon">SOON</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">UAE</div></div>
+    <div class="flag-item">🇬🇧<div class="soon">SOON</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">UK</div></div>
+    <div class="flag-item">🇦🇺<div class="soon">SOON</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">Australia</div></div>
+    <div class="flag-item">🇯🇵<div class="soon">SOON</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">Japan</div></div>
+    <div class="flag-item">🇫🇷<div class="soon">SOON</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">France</div></div>
+  </div>
+</div></section>
+
+<!-- ══════════════════════════════════════
+     WAITLIST
+══════════════════════════════════════ -->
+<section id="waitlist">
   <div class="section-inner">
-    <span class="section-tag reveal">Social Proof</span>
-    <h2 class="reveal">As Seen By<br>the World</h2>
+    <div class="waitlist-inner">
+      <div class="waitlist-count reveal"><div class="wdot"></div><strong id="wcount">2,847</strong>&nbsp;people already on the waitlist</div>
+      <span class="section-tag reveal" style="text-align:center;">Early Access</span>
+      <h2 class="reveal" style="font-size:clamp(32px,5vw,56px);">Be First to<br>Pay Like a Local.</h2>
+      <p class="section-desc reveal" style="margin:0 auto;text-align:center;">Join the waitlist today. Early members get priority access, bonus RupiTokens on launch, and exclusive founding member perks.</p>
 
-    <div class="quote-grid">
-      <div class="quote-card reveal reveal-delay-1">
-        <div class="quote-avatar">🏏</div>
-        <div class="stars">★★★★★</div>
-        <p class="quote-text">"Playing in the IPL every year, I used to always struggle with cash in India. RupiPay changed everything — I scan, pay, done. It's brilliant."</p>
-        <div class="quote-name">Ben Mitchell</div>
-        <div class="quote-role">International Cricketer · IPL Player</div>
-      </div>
-      <div class="quote-card reveal reveal-delay-2">
-        <div class="quote-avatar">🎬</div>
-        <div class="stars">★★★★★</div>
-        <p class="quote-text">"I've made 12 India travel videos and the #1 question I always get is about payments. RupiPay is the answer I've been waiting to give my audience."</p>
-        <div class="quote-name">Jamie Travels</div>
-        <div class="quote-role">Travel Creator · 2.8M subscribers</div>
-      </div>
-      <div class="quote-card reveal reveal-delay-3">
-        <div class="quote-avatar">💼</div>
-        <div class="stars">★★★★★</div>
-        <p class="quote-text">"I visited Mumbai for a conference and RupiPay was the most useful app I had. Set up at the airport, paid everywhere — even the vada pav stall outside."</p>
-        <div class="quote-name">Sarah K.</div>
-        <div class="quote-role">Business Traveller · London, UK</div>
+      <div class="waitlist-form-box reveal">
+
+        <!-- FORM — replace contact@rupipay.co.in with your real email address -->
+        <form id="wForm" action="contact@rupipay.co.in" method="POST">
+          <input type="hidden" name="_subject" value="🎉 New RupiPay Waitlist Signup!">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://rupipay.co.in?joined=1#waitlist">
+
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" name="first_name" placeholder="Your first name" required></div>
+            <div class="form-group"><label>Last Name</label><input type="text" name="last_name" placeholder="Your last name" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="you@email.com" required></div>
+            <div class="form-group">
+              <label>Your Country</label>
+              <select name="country" required>
+                <option value="" disabled selected>Select country</option>
+                <option>United Kingdom 🇬🇧</option><option>United States 🇺🇸</option>
+                <option>Australia 🇦🇺</option><option>Singapore 🇸🇬</option>
+                <option>UAE 🇦🇪</option><option>Canada 🇨🇦</option>
+                <option>Germany 🇩🇪</option><option>France 🇫🇷</option>
+                <option>Japan 🇯🇵</option><option>New Zealand 🇳🇿</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row" style="margin-bottom:24px;">
+            <div class="form-group" style="grid-column:1/-1;">
+              <label>I am a...</label>
+              <select name="role" required>
+                <option value="" disabled selected>Select your role</option>
+                <option>Traveller visiting India soon</option>
+                <option>Frequent India visitor / Expat</option>
+                <option>IPL / Cricket fan</option>
+                <option>Travel content creator / Influencer</option>
+                <option>Hotel / Hospitality business</option>
+                <option>Brand / Merchant partner</option>
+                <option>Investor</option>
+                <option>Just curious!</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="waitlist-submit">✉ Join the Waitlist — It's Free</button>
+          <p class="form-privacy">No spam. No credit card. Just early access to the future of payments in India.</p>
+        </form>
+
+        <!-- Success state (shown when ?joined=1 in URL) -->
+        <div class="waitlist-success" id="wSuccess">
+          <div class="success-big-icon">🎉</div>
+          <h3>You're on the list!</h3>
+          <p>We'll be in touch soon with your early access details and founding member perks.<br><br><em style="color:var(--gold);">अतिथि देवो भव — Welcome to RupiPay.</em></p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GLOBAL EXPANSION -->
-<section id="global">
-  <div class="section-inner" style="text-align:center;">
-    <span class="section-tag reveal">Coming Soon</span>
-    <h2 class="reveal">Use RupiPay<br>in Reverse</h2>
-    <p class="section-desc reveal" style="margin:0 auto 0;">Indian travelers abroad will soon be able to scan and pay internationally as UPI goes global.</p>
-
-    <div class="connect-line reveal" style="margin:32px auto;"></div>
-
-    <div class="global-flags reveal">
-      <div class="flag-item">🇮🇳<div style="font-size:10px;color:var(--muted);margin-top:4px;">India</div></div>
-      <div style="display:flex;align-items:center;color:var(--saffron);font-size:20px;">→</div>
-      <div class="flag-item">🇸🇬<div class="soon">SOON</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">Singapore</div></div>
-      <div class="flag-item">🇦🇪<div class="soon">SOON</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">UAE</div></div>
-      <div class="flag-item">🇬🇧<div class="soon">SOON</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">UK</div></div>
-      <div class="flag-item">🇦🇺<div class="soon">SOON</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">Australia</div></div>
-      <div class="flag-item">🇯🇵<div class="soon">SOON</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">Japan</div></div>
-      <div class="flag-item">🇫🇷<div class="soon">SOON</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">France</div></div>
-    </div>
-
-    <p class="reveal" style="font-size:14px;color:var(--muted);margin-top:16px;">Expanding as NPCI International rolls out UPI interoperability agreements</p>
-  </div>
-</section>
-
-<!-- DOWNLOAD CTA -->
+<!-- DOWNLOAD -->
 <section id="download">
   <div class="section-inner" style="position:relative;z-index:1;text-align:center;">
     <span class="section-tag reveal">Get Started</span>
-    <h2 class="reveal" style="font-size:clamp(32px,5vw,60px);">Your India trip<br>starts here.</h2>
-    <p class="section-desc reveal" style="margin:0 auto 0;font-size:20px;">Set up in under 3 minutes. Pay everywhere in India. Earn rewards as you go.</p>
+    <h2 class="reveal" style="font-size:clamp(32px,5vw,60px);">Your India trip starts here.</h2>
+    <p class="section-desc reveal" style="margin:0 auto;font-size:20px;">Set up in under 3 minutes. Pay everywhere. Earn rewards as you go.</p>
     <div class="store-btns reveal">
-      <a href="#" class="store-btn">
-        <div class="store-icon">🍎</div>
-        <div class="store-text">
-          <small>DOWNLOAD ON THE</small>
-          <strong>App Store</strong>
-        </div>
-      </a>
-      <a href="#" class="store-btn">
-        <div class="store-icon">▶️</div>
-        <div class="store-text">
-          <small>GET IT ON</small>
-          <strong>Google Play</strong>
-        </div>
-      </a>
+      <a href="#" class="store-btn"><div class="store-icon">🍎</div><div class="store-text"><small>DOWNLOAD ON THE</small><strong>App Store</strong></div></a>
+      <a href="#" class="store-btn"><div class="store-icon">▶️</div><div class="store-text"><small>GET IT ON</small><strong>Google Play</strong></div></a>
     </div>
-    <p class="reveal" style="margin-top:24px;font-size:13px;color:rgba(255,255,255,0.3);">Available for iOS 14+ and Android 8+</p>
   </div>
 </section>
 
@@ -981,55 +518,24 @@ footer{
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-logo-area">
-        <svg width="160" height="32" viewBox="0 0 220 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <text x="2" y="36" font-family="Arial Black,Georgia,serif" font-size="38" font-weight="900" fill="#FF6B00">₹</text>
-          <rect x="40" y="6" width="60" height="32" rx="16" fill="#FF6B00"/>
-          <path d="M70 6 H86 Q100 6 100 22 V22 Q100 38 86 38 H70 Z" fill="#5A35A8"/>
-          <text x="55" y="26" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="800" fill="white" text-anchor="middle" letter-spacing="1">UPI</text>
-          <polygon points="82,12 77,22 81,22 76,34 87,20 82,20" fill="white" opacity="0.9"/>
-          <circle cx="35" cy="22" r="3" fill="#FF6B00"/>
-          <circle cx="106" cy="22" r="3" fill="#5A35A8"/>
-          <text x="180" y="34" font-family="Arial Black,sans-serif" font-size="32" font-weight="900" fill="white" text-anchor="middle">Pay</text>
+        <svg height="34" viewBox="0 0 210 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="20,4 46,24 20,44 28,44 54,24 28,4" fill="#138808" opacity="0.88"/>
+          <polygon points="6,4 32,24 6,44 15,44 41,24 15,4" fill="#FF6B00"/>
+          <text x="10" y="32" font-family="Georgia,serif" font-size="18" font-weight="900" fill="white">₹</text>
+          <text x="60" y="34" font-family="Arial Black,sans-serif" font-size="26" font-weight="900" fill="white">Rupi</text>
+          <text x="130" y="34" font-family="Arial Black,sans-serif" font-size="26" font-weight="900" fill="#FF6B00">Pay</text>
         </svg>
         <p class="tagline">Pay Like a Local.<br>Explore Like a Guest.</p>
       </div>
-      <div class="footer-links">
-        <h4>Product</h4>
-        <ul>
-          <li><a href="#how">How It Works</a></li>
-          <li><a href="#tokens">RupiTokens</a></li>
-          <li><a href="#where">Coverage</a></li>
-          <li><a href="#download">Download</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h4>Business</h4>
-        <ul>
-          <li><a href="#partner">Become a Partner</a></li>
-          <li><a href="#">Whitelabel</a></li>
-          <li><a href="#">Advertise</a></li>
-          <li><a href="#">API Access</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
+      <div class="footer-links"><h4>Product</h4><ul><li><a href="#how">How It Works</a></li><li><a href="#tokens">RupiTokens</a></li><li><a href="#where">Coverage</a></li><li><a href="#waitlist">Join Waitlist</a></li></ul></div>
+      <div class="footer-links"><h4>Business</h4><ul><li><a href="#partner">Become a Partner</a></li><li><a href="#">Whitelabel</a></li><li><a href="#">Advertise</a></li><li><a href="#">API Access</a></li></ul></div>
+      <div class="footer-links"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul></div>
     </div>
     <div class="footer-bottom">
-      <p class="legal">
-        RupiPay is a Prepaid Payment Instrument (PPI) wallet service operating under Reserve Bank of India guidelines. FEMA compliant. Issued in partnership with RBI-authorized entities. Max wallet balance ₹2,00,000. For support: hello@rupipay.co.in · rupipay.co.in
-      </p>
+      <p class="legal">RupiPay is a Prepaid Payment Instrument (PPI) wallet service operating under Reserve Bank of India guidelines. FEMA compliant. Issued in partnership with RBI-authorized entities. Max wallet balance ₹2,00,000. hello@rupipay.co.in · rupipay.co.in</p>
       <div class="social-links">
-        <a href="#" class="social-link" title="Instagram">📸</a>
-        <a href="#" class="social-link" title="Twitter/X">𝕏</a>
-        <a href="#" class="social-link" title="YouTube">▶</a>
-        <a href="#" class="social-link" title="LinkedIn">in</a>
+        <a href="#" class="social-link">📸</a><a href="#" class="social-link">𝕏</a>
+        <a href="#" class="social-link">▶</a><a href="#" class="social-link">in</a>
       </div>
     </div>
   </div>
@@ -1037,21 +543,29 @@ footer{
 
 <script>
 // Sticky nav
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
-});
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50));
 
 // Scroll reveal
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.12 });
-reveals.forEach(el => observer.observe(el));
+const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Animated counter
+function animCount(){
+  const el=document.getElementById('wcount');
+  let n=2700,t=2847;
+  const iv=setInterval(()=>{n+=Math.ceil((t-n)/8);el.textContent=n.toLocaleString();if(n>=t){el.textContent=t.toLocaleString();clearInterval(iv);}},40);
+}
+const cObs=new IntersectionObserver(e=>{if(e[0].isIntersecting){animCount();cObs.disconnect();}},{threshold:0.5});
+cObs.observe(document.getElementById('waitlist'));
+
+// Show success state if redirected back after form submit
+const params=new URLSearchParams(window.location.search);
+if(params.get('joined')==='1'){
+  document.getElementById('wForm').style.display='none';
+  document.getElementById('wSuccess').style.display='block';
+  document.getElementById('waitlist').scrollIntoView({behavior:'smooth'});
+}
 </script>
 </body>
 </html>
