@@ -443,7 +443,7 @@ footer{background:rgba(0,0,0,0.3);border-top:1px solid var(--border);padding:60p
 
       <div class="waitlist-form-box reveal">
 
-        <!-- FORM — replace contact@rupipay.co.in with your real email address -->
+        <!-- FORM — replace YOUR@EMAIL.COM with your real email address -->
         <form id="wForm" action="https://formsubmit.co/ajax/contact@rupipay.co.in" method="POST">
           <input type="hidden" name="_subject" value="🎉 New RupiPay Waitlist Signup!">
           <input type="hidden" name="_captcha" value="false">
@@ -559,7 +559,7 @@ function animCount(){
 const cObs=new IntersectionObserver(e=>{if(e[0].isIntersecting){animCount();cObs.disconnect();}},{threshold:0.5});
 cObs.observe(document.getElementById('waitlist'));
 
-// Waitlist form — AJAX submission (works on GitHub Pages)
+// Waitlist form — AJAX submission (works on GitHub Pages static hosting)
 document.getElementById('wForm').addEventListener('submit', function(e) {
   e.preventDefault();
   const btn = this.querySelector('.waitlist-submit');
@@ -578,10 +578,9 @@ document.getElementById('wForm').addEventListener('submit', function(e) {
   .catch(() => {
     btn.textContent = '✉ Join the Waitlist — It\'s Free';
     btn.disabled = false;
-    alert('Something went wrong. Please try again.');
+    alert('Something went wrong — please try again.');
   });
 });
-}
 </script>
 </body>
 </html>
