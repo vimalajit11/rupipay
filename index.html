@@ -228,6 +228,81 @@ footer{background:rgba(0,0,0,0.3);border-top:1px solid var(--border);padding:60p
 .reveal-delay-2{transition-delay:.2s;}
 .reveal-delay-3{transition-delay:.3s;}
 
+
+
+/* CASHBACK */
+#cashback{background:linear-gradient(135deg,#0a1f0d 0%,#0A1628 60%,#1a0e00 100%);position:relative;overflow:hidden;}
+#cashback::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:rgba(19,136,8,0.1);top:-100px;right:-100px;filter:blur(80px);pointer-events:none;}
+#cashback::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:rgba(255,107,0,0.08);bottom:-100px;left:-50px;filter:blur(80px);pointer-events:none;}
+.cashback-inner{position:relative;z-index:1;}
+.cashback-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(19,136,8,0.15);border:1px solid rgba(19,136,8,0.35);padding:8px 20px;border-radius:50px;font-size:13px;color:#4ade80;font-weight:600;margin-bottom:28px;}
+.cashback-badge .cbdot{width:8px;height:8px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite;}
+.cashback-subtitle{font-size:17px;color:var(--muted);margin-bottom:56px;font-weight:300;}
+.slabs{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:48px;}
+.slab{
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  border-radius:20px;padding:28px 16px;
+  text-align:center;position:relative;overflow:hidden;
+  transition:transform .3s,border-color .3s,background .3s;
+  cursor:default;
+}
+.slab:hover{transform:translateY(-8px);border-color:rgba(255,107,0,0.5);background:rgba(255,107,0,0.06);}
+.slab.featured{border-color:rgba(255,107,0,0.4);background:rgba(255,107,0,0.07);}
+.slab.featured::before{content:'POPULAR';position:absolute;top:12px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:2px;font-weight:700;color:var(--saffron);background:rgba(255,107,0,0.15);padding:3px 10px;border-radius:50px;}
+.slab-spend{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;margin-top:8px;}
+.slab-amount{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.slab-arrow{font-size:20px;color:var(--saffron);margin:10px 0;}
+.slab-cashback-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#4ade80;margin-bottom:6px;}
+.slab-cashback-amt{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:#4ade80;}
+.slab-pct{font-size:12px;color:rgba(74,222,128,0.6);margin-top:4px;}
+.cashback-rules{
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:32px 36px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+}
+.rule{display:flex;align-items:flex-start;gap:12px;}
+.rule-icon{font-size:24px;flex-shrink:0;}
+.rule-text strong{display:block;font-size:14px;font-weight:500;margin-bottom:4px;}
+.rule-text span{font-size:13px;color:var(--muted);line-height:1.5;}
+.cashback-cta-strip{
+  margin-top:40px;text-align:center;
+  background:linear-gradient(90deg,rgba(255,107,0,0.1),rgba(19,136,8,0.1));
+  border:1px solid rgba(255,107,0,0.2);
+  border-radius:var(--radius);padding:28px;
+}
+.cashback-cta-strip p{font-size:18px;font-weight:500;margin-bottom:16px;}
+.cashback-cta-strip em{color:var(--gold);font-style:normal;}
+@media(max-width:768px){
+  .slabs{grid-template-columns:1fr 1fr;}.cashback-rules{grid-template-columns:1fr 1fr;}
+  .slab.featured::before{font-size:8px;}
+}
+
+/* FREE ONBOARDING STRIP */
+.free-strip{display:flex;flex-direction:column;gap:10px;margin-top:28px;animation:fadeUp .8s .4s ease both;}
+.free-item{font-size:14px;font-weight:500;padding:10px 18px;border-radius:50px;display:inline-flex;align-items:center;gap:8px;width:fit-content;}
+.free-bad{background:rgba(255,60,60,0.08);border:1px solid rgba(255,60,60,0.2);color:rgba(255,180,180,0.8);}
+.free-good{background:rgba(19,136,8,0.12);border:1px solid rgba(19,136,8,0.3);color:#4ade80;font-weight:600;}
+
+/* AI FEATURES */
+#ai{background:var(--navy);}
+.ai-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin-top:60px;}
+.ai-card{background:linear-gradient(135deg,var(--navy2),var(--navy3));border:1px solid var(--border);border-radius:var(--radius);padding:32px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s;}
+.ai-card:hover{transform:translateY(-5px);border-color:rgba(255,107,0,0.3);}
+.ai-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--saffron),var(--gold));}
+.ai-icon{font-size:36px;margin-bottom:16px;}
+.ai-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--saffron);font-weight:600;margin-bottom:8px;display:block;}
+.ai-card h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:10px;}
+.ai-card p{color:var(--muted);font-size:14px;line-height:1.7;}
+.ai-revenue-banner{margin-top:60px;background:linear-gradient(135deg,rgba(255,107,0,0.08),rgba(19,136,8,0.08));border:1px solid rgba(255,107,0,0.2);border-radius:var(--radius);padding:40px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;}
+.ai-rev-item{text-align:center;}
+.ai-rev-icon{font-size:28px;margin-bottom:10px;}
+.ai-rev-item h4{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:6px;}
+.ai-rev-item p{font-size:13px;color:var(--muted);}
+@media(max-width:768px){.ai-revenue-banner{grid-template-columns:1fr;}.free-item{font-size:13px;}}
+
 @media(max-width:768px){
   nav{padding:16px 20px;}.nav-links{display:none;}
   #hero{padding:100px 20px 60px;}.hero-inner{grid-template-columns:1fr;}.hero-phone{display:none;}
@@ -258,6 +333,8 @@ footer{background:rgba(0,0,0,0.3);border-top:1px solid var(--border);padding:60p
     <li><a href="#how">How It Works</a></li>
     <li><a href="#tokens">Rewards</a></li>
     <li><a href="#partner">Partners</a></li>
+    <li><a href="#cashback">Cashback</a></li>
+    <li><a href="#ai">AI Features</a></li>
     <li><a href="#waitlist">Waitlist</a></li>
   </ul>
   <a href="#waitlist" class="nav-cta">✉ Join Waitlist</a>
@@ -274,6 +351,10 @@ footer{background:rgba(0,0,0,0.3);border-top:1px solid var(--border);padding:60p
       <div class="hero-btns">
         <a href="#waitlist" class="btn-primary">✉ Join the Waitlist</a>
         <a href="#how" class="btn-ghost">Learn How It Works</a>
+      </div>
+      <div class="free-strip">
+        <div class="free-item free-bad">❌ Others charge ₹1,999 just to get started</div>
+        <div class="free-item free-good">✅ RupiPay onboarding is completely free — always</div>
       </div>
     </div>
     <div class="hero-phone">
@@ -311,6 +392,8 @@ footer{background:rgba(0,0,0,0.3);border-top:1px solid var(--border);padding:60p
 <!-- TRUST BAR -->
 <div id="trust">
   <div class="trust-inner">
+    <span>💚 10% instant cashback on every slab</span><div class="trust-dot"></div>
+    <span>🎉 Zero joining fees — free forever</span><div class="trust-dot"></div>
     <span>✦ Trusted by visitors from 40+ countries</span><div class="trust-dot"></div>
     <span>🇺🇸 🇬🇧 🇦🇺 🇸🇬 🇦🇪 🇨🇦 🇩🇪 🇫🇷 🇯🇵 🇳🇿</span><div class="trust-dot"></div>
     <span>✦ Built on India's UPI infrastructure</span><div class="trust-dot"></div>
@@ -348,6 +431,96 @@ footer{background:rgba(0,0,0,0.3);border-top:1px solid var(--border);padding:60p
   <div class="atithi-rule reveal"></div>
   <p class="atithi-text reveal">For thousands of years, India has welcomed every visitor as a divine guest. RupiPay is built on that same belief — that every foreign visitor deserves to experience India without barriers, friction, or confusion.<br><br><em style="color:var(--gold);">You are our Atithi. We've got you covered.</em></p>
 </div></section>
+
+
+<!-- CASHBACK -->
+<section id="cashback">
+  <div class="section-inner cashback-inner">
+    <div class="cashback-badge reveal"><div class="cbdot"></div>Limited Launch Offer · First 10,000 Users Only</div>
+    <span class="section-tag reveal">Instant Cashback</span>
+    <h2 class="reveal">Spend More,<br>Get <span style="color:#4ade80;">Real Money Back</span></h2>
+    <p class="cashback-subtitle reveal">Every time you cross a spending slab within 24 hours, we add instant cashback straight back into your RupiPay wallet. No points. No vouchers. Real rupees.</p>
+
+    <div class="slabs">
+      <div class="slab reveal reveal-delay-1">
+        <div class="slab-spend">Spend</div>
+        <div class="slab-amount">₹1,000</div>
+        <div class="slab-arrow">↓</div>
+        <div class="slab-cashback-label">Cashback</div>
+        <div class="slab-cashback-amt">₹100</div>
+        <div class="slab-pct">10% back</div>
+      </div>
+      <div class="slab reveal reveal-delay-2">
+        <div class="slab-spend">Spend</div>
+        <div class="slab-amount">₹2,000</div>
+        <div class="slab-arrow">↓</div>
+        <div class="slab-cashback-label">Cashback</div>
+        <div class="slab-cashback-amt">₹200</div>
+        <div class="slab-pct">10% back</div>
+      </div>
+      <div class="slab featured reveal reveal-delay-2">
+        <div class="slab-spend">Spend</div>
+        <div class="slab-amount">₹3,000</div>
+        <div class="slab-arrow">↓</div>
+        <div class="slab-cashback-label">Cashback</div>
+        <div class="slab-cashback-amt">₹300</div>
+        <div class="slab-pct">10% back</div>
+      </div>
+      <div class="slab reveal reveal-delay-3">
+        <div class="slab-spend">Spend</div>
+        <div class="slab-amount">₹4,000</div>
+        <div class="slab-arrow">↓</div>
+        <div class="slab-cashback-label">Cashback</div>
+        <div class="slab-cashback-amt">₹400</div>
+        <div class="slab-pct">10% back</div>
+      </div>
+      <div class="slab reveal reveal-delay-3">
+        <div class="slab-spend">Spend</div>
+        <div class="slab-amount">₹5,000</div>
+        <div class="slab-arrow">↓</div>
+        <div class="slab-cashback-label">Cashback</div>
+        <div class="slab-cashback-amt">₹500</div>
+        <div class="slab-pct">10% back</div>
+      </div>
+    </div>
+
+    <div class="cashback-rules reveal">
+      <div class="rule">
+        <div class="rule-icon">⚡</div>
+        <div class="rule-text">
+          <strong>Instant credit</strong>
+          <span>Cashback lands in your wallet the moment you cross the slab — no waiting.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon">🕐</div>
+        <div class="rule-text">
+          <strong>24-hour window</strong>
+          <span>Each slab resets every 24 hours — so there's a reason to use RupiPay every day.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon">💵</div>
+        <div class="rule-text">
+          <strong>Real wallet money</strong>
+          <span>Not points, not vouchers. Actual spendable rupees added to your balance.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon">🎯</div>
+        <div class="rule-text">
+          <strong>Any merchant</strong>
+          <span>Spend at any QR-enabled merchant in India — street food to luxury hotels.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cashback-cta-strip reveal">
+      <p>Others charge you ₹1,999 to start. <em>We pay you to spend.</em></p>
+      <a href="#waitlist" class="btn-primary" style="display:inline-flex;">🎉 Claim Your Cashback — Join Waitlist</a>
+    </div>
+  </div>
+</section>
 
 <!-- RUPITOKENS -->
 <section id="tokens"><div class="section-inner">
@@ -427,6 +600,71 @@ footer{background:rgba(0,0,0,0.3);border-top:1px solid var(--border);padding:60p
     <div class="flag-item">🇦🇺<div class="soon">SOON</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">Australia</div></div>
     <div class="flag-item">🇯🇵<div class="soon">SOON</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">Japan</div></div>
     <div class="flag-item">🇫🇷<div class="soon">SOON</div><div style="font-size:10px;color:var(--muted);margin-top:4px;">France</div></div>
+  </div>
+</div></section>
+
+
+<!-- AI FEATURES -->
+<section id="ai"><div class="section-inner">
+  <span class="section-tag reveal">Powered by AI</span>
+  <h2 class="reveal">India's Smartest<br>Visitor Payments App</h2>
+  <p class="section-desc reveal">RupiPay isn't just a wallet — it's an AI-powered India companion that learns how you travel and works for you at every step.</p>
+
+  <div class="ai-grid">
+    <div class="ai-card reveal reveal-delay-1">
+      <div class="ai-icon">🧭</div>
+      <span class="ai-tag">Smart Concierge</span>
+      <h3>Personalised Spend Guide</h3>
+      <p>AI tracks your spending and proactively surfaces the right rewards at the right moment — "You're ₹800 away from your Taste Token. Here are 3 restaurants nearby."</p>
+    </div>
+    <div class="ai-card reveal reveal-delay-2">
+      <div class="ai-icon">💱</div>
+      <span class="ai-tag">FX Intelligence</span>
+      <h3>Best Rate Alerts</h3>
+      <p>AI monitors live exchange rates and notifies you when it's optimal to top up — so your money goes further every single time.</p>
+    </div>
+    <div class="ai-card reveal reveal-delay-3">
+      <div class="ai-icon">🛡️</div>
+      <span class="ai-tag">Fraud Protection</span>
+      <h3>Smart QR Verification</h3>
+      <p>Before every payment, AI cross-checks the merchant QR against a live verified database. Suspicious codes are flagged instantly — keeping you safe from scams.</p>
+    </div>
+    <div class="ai-card reveal reveal-delay-1">
+      <div class="ai-icon">📊</div>
+      <span class="ai-tag">Trip Planning</span>
+      <h3>AI Budget Companion</h3>
+      <p>Input your trip duration and style — AI generates a personalised daily spend plan by category and tracks actual vs planned spend in real time.</p>
+    </div>
+    <div class="ai-card reveal reveal-delay-2">
+      <div class="ai-icon">🌐</div>
+      <span class="ai-tag">Language AI</span>
+      <h3>Multilingual by Default</h3>
+      <p>The app detects your language and switches automatically — French, Japanese, German, Arabic and more. India speaks your language with RupiPay.</p>
+    </div>
+    <div class="ai-card reveal reveal-delay-3">
+      <div class="ai-icon">📈</div>
+      <span class="ai-tag">For Partners</span>
+      <h3>Merchant Intelligence Dashboard</h3>
+      <p>AI-generated insights for partner businesses — peak visitor hours, average spend, nationality breakdown. Data that helps you serve international guests better.</p>
+    </div>
+  </div>
+
+  <div class="ai-revenue-banner reveal">
+    <div class="ai-rev-item">
+      <div class="ai-rev-icon">🎉</div>
+      <h4>Free to Join</h4>
+      <p>Zero joining fees. Zero hidden charges. The only cost is what you spend.</p>
+    </div>
+    <div class="ai-rev-item">
+      <div class="ai-rev-icon">💸</div>
+      <h4>We earn when you spend</h4>
+      <p>Tiny FX margins and merchant commissions — not charged to you. Ever.</p>
+    </div>
+    <div class="ai-rev-item">
+      <div class="ai-rev-icon">🤝</div>
+      <h4>Atithi Devo Bhava</h4>
+      <p>You are our guest. RupiPay exists to serve you — not to charge you at the door.</p>
+    </div>
   </div>
 </div></section>
 
